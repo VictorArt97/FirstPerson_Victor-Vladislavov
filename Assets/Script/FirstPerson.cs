@@ -1,17 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FirstPerson : MonoBehaviour
 {
     [SerializeField] private float velocidadMovimiento;
     private Camera cam;
-
+    
+    [Header("DMovimiento Jugador")]
     CharacterController controller;
+    [SerializeField] private float escalaGravedad;
+    private Vector3 movimientoVerticar;
+    [SerializeField] private float alturaSalto;
+
+  
+    [Header("Deteccion del suelo")]
+    [SerializeField] private Transform pies;
+    [SerializeField] private float radioDeteccion;
+    [SerializeField] private LayerMask queEsSuelo;
+
+   
+    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-      controller = GetComponent<CharacterController>();
+       controller = GetComponent<CharacterController>();
         cam = Camera.main;
     }
 
@@ -34,11 +49,47 @@ public class FirstPerson : MonoBehaviour
 
             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
        
-            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);
+            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);          
+          
+        }
+        DeteccionSuelo();
+        AplicarGravedad();
+    } 
+    private void AplicarGravedad()
+    {
+            movimientoVerticar.y += escalaGravedad * Time.deltaTime;
+        controller.Move (movimientoVerticar * Time.deltaTime);
 
 
+    }
+
+    private void DeteccionSuelo ()
+    {
+        // tengo que lanzar una gola de deteccion en mis pies para detectar si hay suelo 
+       Collider[] collsDetectados= Physics.OverlapSphere(pies.position,radioDeteccion,queEsSuelo);
+
+        if (collsDetectados.Length>0)
+        {
+            movimientoVerticar.y =0;
+            Saltar();
+        }
+          
+    }
+
+    private void Saltar()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            movimientoVerticar.y = Mathf.Sqrt(-2 * escalaGravedad * alturaSalto);
         }
 
-       
+
+    }
+
+    // sirve para dibujar una forma
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;    
+        Gizmos.DrawWireSphere(pies.position, radioDeteccion);
     }
 }
