@@ -94,6 +94,10 @@ public class FirstPerson : MonoBehaviour
     {
 
         vidas -= danhoRecibido;
+        if (vidas < 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
 
