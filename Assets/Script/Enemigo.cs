@@ -6,12 +6,19 @@ using UnityEngine.AI;
 public class Enemigo : MonoBehaviour
 {
 
+    [SerializeField] private float danhoAtaque;
+
+   
     private NavMeshAgent agent;
     private FirstPerson player;
 
     private Animator anim;
 
     private bool ventanaAbierta = false;
+
+    [SerializeField] private Transform AttackPoint;
+    [SerializeField] private float radioAtaque;
+    [SerializeField] private LayerMask queEsDanhable;
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +33,41 @@ public class Enemigo : MonoBehaviour
     void Update()
     {
         Perseguir();
+
+        if (ventanaAbierta)
+        {
+            DetectarJugador();
+        
+        }
+
+    }
+
+    private void DetectarJugador()
+    {
+        // necesitas referenciar el pivot del attackPoint 
+        // crear una variable que represente el radio de ataque 
+        // variagble que represente la layer a la que afecta 
+        // completar los parametros de entrada
+        Collider [] colsDetectados= Physics.OverlapSphere(AttackPoint.position, radioAtaque, queEsDanhable);
+
+        // si hemos detectado al menos 1 colider mide ya mas que 0 ( ya que este if significa que la longitud de los coliders es mayor que 0)
+        if ( colsDetectados.Length > 0 )
+        {
+            for (int i = 0; i < colsDetectados.Length; i++)
+            {
+
+                // esta variable es del tipo first person al ser lo mas especifico
+
+                colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danhoAtaque);
+
+               
+            }
+        }
     }
 
     private void Perseguir()
     {
         agent.SetDestination(player.transform.position);
-
 
         // si la distancia que nos queda hacia el objeto cae por debjado del stoppingDistance
         if (agent.remainingDistance <= agent.stoppingDistance)

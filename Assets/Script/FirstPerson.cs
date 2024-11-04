@@ -6,10 +6,13 @@ using UnityEngine.Rendering;
 
 public class FirstPerson : MonoBehaviour
 {
+
+    [SerializeField] private float vidas;
+   
     [SerializeField] private float velocidadMovimiento;
     private Camera cam;
     
-    [Header("DMovimiento Jugador")]
+    [Header("Movimiento Jugador")]
     CharacterController controller;
     [SerializeField] private float escalaGravedad;
     private Vector3 movimientoVerticar;
@@ -83,6 +86,14 @@ public class FirstPerson : MonoBehaviour
             movimientoVerticar.y = Mathf.Sqrt(-2 * escalaGravedad * alturaSalto);
         }
 
+
+    }
+
+
+    public void RecibirDanho(float danhoRecibido)
+    {
+
+        vidas -= danhoRecibido;
 
     }
 
