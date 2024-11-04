@@ -23,7 +23,7 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestiantion(player.transform.position);
+        agent.SetDestination(player.transform.position);
 
 
         // si la distancia que nos queda hacia el objeto cae por debjado del stoppingDistance
@@ -32,5 +32,19 @@ public class Enemigo : MonoBehaviour
             agent.isStopped = true;
             anim.SetBool("attacking",true);
         }
+    }
+
+    #region Eventos de animacion
+    // funciona con evento de animacion ( todavia no porque no he terminado)
+    private void FinAtaque()
+    {
+         agent.isStopped= false;
+        anim.SetBool("attacking",false);
+    }
+
+    #endregion
+    private void Atacar()
+    {
+
     }
 }
