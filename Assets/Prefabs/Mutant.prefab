@@ -584,8 +584,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9042098760637138623}
   - component: {fileID: 5054013909477590558}
-  - component: {fileID: 3960252668845981582}
   - component: {fileID: 2725743640224470497}
+  - component: {fileID: 3960252668845981582}
   - component: {fileID: 9115641137307348531}
   m_Layer: 7
   m_Name: Mutant
@@ -624,12 +624,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38692439cf985a4dae7b829d4595c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danhoAtaque: 0
+  danhoAtaque: 25
   AttackPoint: {fileID: 4937169592637771284}
   radioAtaque: 1
   queEsDanhable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+--- !u!195 &2725743640224470497
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828936464623237703}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: Infinity
+  avoidancePriority: 50
+  m_AngularSpeed: 350
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!54 &3960252668845981582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -657,28 +679,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!195 &2725743640224470497
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3828936464623237703}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: Infinity
-  avoidancePriority: 50
-  m_AngularSpeed: 350
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!95 &9115641137307348531
 Animator:
   serializedVersion: 5
@@ -1011,7 +1011,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 581593721317780123, guid: 880df62e56924f843930ffe7fde0f7d5, type: 3}
+  - {fileID: 2100000, guid: 649817a337ecbd741969301977800b25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
