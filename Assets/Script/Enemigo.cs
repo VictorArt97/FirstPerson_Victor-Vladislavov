@@ -11,6 +11,8 @@ public class Enemigo : MonoBehaviour
 
     private Animator anim;
 
+    private bool ventanaAbierta = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,11 @@ public class Enemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Perseguir();
+    }
+
+    private void Perseguir()
+    {
         agent.SetDestination(player.transform.position);
 
 
@@ -30,7 +37,7 @@ public class Enemigo : MonoBehaviour
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.isStopped = true;
-            anim.SetBool("attacking",true);
+            anim.SetBool("attacking", true);
         }
     }
 
@@ -41,10 +48,15 @@ public class Enemigo : MonoBehaviour
          agent.isStopped= false;
         anim.SetBool("attacking",false);
     }
+    private void AbrirVentanaAtaque()
 
     #endregion
-    private void Atacar()
     {
+        ventanaAbierta=true;
+    }
+    private void CerrarVentanaAtaque()
+    {
+        ventanaAbierta = false;
 
     }
 }
