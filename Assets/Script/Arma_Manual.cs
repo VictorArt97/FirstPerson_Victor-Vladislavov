@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arma_Manual : MonoBehaviour
 {
+    [SerializeField] ParticleSystem system;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,8 @@ public class Arma_Manual : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("pium");
+           system.Play();
+
         }
 
     }
