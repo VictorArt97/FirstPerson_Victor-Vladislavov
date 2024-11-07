@@ -7,6 +7,8 @@ public class Arma_Manual : MonoBehaviour
     [SerializeField] private ArmaSO misDatos;
     [SerializeField] private ParticleSystem system;
     [SerializeField] private Camera cam;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,13 @@ public class Arma_Manual : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
            system.Play();   // ejecutar sistema particulas
-           if (Physics.Raycast(cam.transform.position, -cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque);)
+           if (Physics.Raycast(cam.transform.position, -cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
-                
+                hitInfo.transform.GetComponent<Enemigo>().RecibirDanio(misDatos.danioAtaque);
+                    // generar un metodo recibir daño en el script enemgio con un parametro tipo float
+                    //desde este script ejecutar el metodo recibir daño del enemigo
+                    // para ello necesitamos un daño.obtenla del SO
+                    // si el enemigo se queda sin vida , destruirlo.
             }
 
         }

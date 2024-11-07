@@ -15,5 +15,5 @@ MonoBehaviour:
   balasCargador: 7
   balasBolsa: 40
   distanciaAtaque: 500
-  "da\xF1oAtaque": 25
+  danioAtaque: 25
   cadenciaAtaque: 2
