@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Sistema_Interacciones : MonoBehaviour
 {
-    [SerializeField] private Transform pov;
-    [SerializeField] private float areaDeteccion;
-    [SerializeField] private LayerMask queEsInteractuable;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float distanciaInteraccion;
 
+    Transform interactuableActual;
 
     void Start()
     {
@@ -21,12 +22,25 @@ public class Sistema_Interacciones : MonoBehaviour
         // si hemos hitteado algo , preguntar si ese algo tiene el tag interactuable
         // si es asi , pone un debug log "detectado" 
 
-        Collider[] collsDetectados = Physics.OverlapSphere(pov.position, areaDeteccion, queEsInteractuable);
-        if (collsDetectados.Length > 0)
-        {
-            Debug.Log("Encontrado");
-        }
+        
 
-       // Physics.Raycast(pov.transform.position, -pov.transform.forward, out RaycastHit hitInfo,)
+       if( Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, distanciaInteraccion))
+        {
+            if (hit.transform.CompareTag("Interaccionable"))
+            {              
+                Debug.Log("lolololololololoololololo");
+
+                // aquello que he hitteado es la caja 
+                // acceder a su script y Activaro ( es un componente )
+
+                interactuableActual = hit.transform;
+                interactuableActual.GetComponent<Outline>().enabled=true;
+            }
+            else if(interactuableActual)
+            {
+                interactuableActual.GetComponent<Outline>().enabled = false;
+                interactuableActual=null;
+            }
+        }
     }
 }
