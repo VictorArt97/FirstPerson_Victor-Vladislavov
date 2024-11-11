@@ -36,11 +36,11 @@ public class Sistema_Interacciones : MonoBehaviour
                 interactuableActual = hit.transform;
                 interactuableActual.GetComponent<Outline>().enabled=true;
             }
+        }
             else if(interactuableActual)
             {
                 interactuableActual.GetComponent<Outline>().enabled = false;
                 interactuableActual=null;
             }
-        }
     }
 }
