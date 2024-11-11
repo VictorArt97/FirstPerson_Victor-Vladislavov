@@ -24,7 +24,8 @@ public class Arma_Manual : MonoBehaviour
            system.Play();   // ejecutar sistema particulas
            if (Physics.Raycast(cam.transform.position, -cam.transform.forward, out RaycastHit hitInfo, misDatos.distanciaAtaque))
             {
-                hitInfo.transform.GetComponent<Enemigo>().RecibirDanio(misDatos.danioAtaque);
+                if(hitInfo.transform.CompareTag("ParteEnemigo"))
+                hitInfo.transform.GetComponent<EnemyPart>().RecibirDanio(misDatos.danioAtaque);
                     // generar un metodo recibir daño en el script enemgio con un parametro tipo float
                     //desde este script ejecutar el metodo recibir daño del enemigo
                     // para ello necesitamos un daño.obtenla del SO

@@ -13,7 +13,6 @@ public class Enemigo : MonoBehaviour
     private FirstPerson player;
 
     private Animator anim;
-
     private bool ventanaAbierta = false;
 
     [SerializeField] private Transform AttackPoint;
@@ -21,20 +20,25 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private LayerMask queEsDanhable;
     private bool danhoRealizado = false;
 
+    private Rigidbody[] huesos;    // array de rigidBodys
+
+
 
     [SerializeField] private float vidaEnemigo;
-   
 
-    // Start is called before the first frame update
+    public float VidaEnemigo { get => vidaEnemigo; set => vidaEnemigo = value; }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
+        huesos= GetComponentsInChildren<Rigidbody>();
         player = GameObject.FindObjectOfType<FirstPerson>();
+        
+        EstadoHuesos(true);
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         Perseguir();
@@ -98,16 +102,26 @@ public class Enemigo : MonoBehaviour
     {
         ventanaAbierta=true;
     }
-
-    public void RecibirDanio(float danioRecibido)
+    public void Morir()
     {
-        vidaEnemigo -= danioRecibido;
-        if (vidaEnemigo <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-       
+
+        // enabled sirve para activar/desactivar componentres 
+        // setActive sirve para activar /Desactivar un Objeto entero
+        anim.enabled = false;
+        agent.enabled = false;
+        EstadoHuesos(false);
+        Destroy(gameObject, 10);
     }
+
+    private void EstadoHuesos(bool estado)
+    {
+        for (int i = 0; i < huesos.Length; i++)
+        {
+            huesos[i].isKinematic = estado;
+        }
+    }
+
+   
     private void CerrarVentanaAtaque()
     {
         ventanaAbierta = false;
