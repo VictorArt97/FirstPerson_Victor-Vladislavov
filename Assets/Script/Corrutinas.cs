@@ -5,12 +5,12 @@ using UnityEngine;
 public class Corrutinas : MonoBehaviour
 {
     private bool corrutinaAbierta;
-    // Start is called before the first frame update
+    // la corrutina es un  metodo metiendole tiempos de espera 
     void Start()
     {
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.S) && corrutinaAbierta == false)
