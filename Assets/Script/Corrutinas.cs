@@ -18,6 +18,10 @@ public class Corrutinas : MonoBehaviour
         {
             StartCoroutine(Semaforo());
             corrutinaAbierta = true;
+            ///   StopCoroutine(Generador());   /// para parar la corrutina    // no usar este porque funciona mal
+
+            ///   StopAllCoroutines();    // para detener todas las corrutinas a la vez 
+            /// 
         }
     }
 

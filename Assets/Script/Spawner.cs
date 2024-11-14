@@ -10,18 +10,26 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform [] puntosSpawn;
     [SerializeField] private Enemigo enemigoPrefab; 
 
-    void Update()
+    void Start()
     {
-        
+       
+        StartCoroutine(Generador());
+    
     }
 
-    IEnumerator Generador()
+    private IEnumerator Generador()
     {
-        while (1 == 1)
+        while (true)
         {
             // saca una copia en el punto 0 con rotacion ninguna 
-            Instantiate(enemigoPrefab, puntosSpawn[0].position,Quaternion.identity);
+            Instantiate(enemigoPrefab, puntosSpawn[Random.Range(0, puntosSpawn.Length)].position,Quaternion.identity);
+            yield return new WaitForSeconds(4);
+            
 
         }
+
+        // para porcentaje if ( rng <= 0.3f)   // 10%
+
+        // if ( rng > 0.2f && rng <= 0.9f) // 70%    ( restar el segundo con el primero)
     }
 }
