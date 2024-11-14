@@ -102,6 +102,17 @@ public class FirstPerson : MonoBehaviour
 
     }
 
+    // como un dollision enter pero con el character controler
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("ParteEnemigo"))
+        {
+           Rigidbody rbEnemigo= hit.gameObject.GetComponent<Rigidbody>();
+            Vector3 direccionFuerza= hit.transform.position - gameObject.transform.position;
+            rbEnemigo.AddForce(direccionFuerza.normalized * 50 , ForceMode.Impulse);
+        }
+    }
+
     // sirve para dibujar una forma
     private void OnDrawGizmos()
     {
