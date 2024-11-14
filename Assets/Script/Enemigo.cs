@@ -81,7 +81,9 @@ public class Enemigo : MonoBehaviour
         agent.SetDestination(player.transform.position);
 
         // si la distancia que nos queda hacia el objeto cae por debjado del stoppingDistance
-        if (agent.pathPending == false && agent.remainingDistance <= agent.stoppingDistance)
+        // si no hay calculos pendientes para saber donde esta mi objeto
+
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             agent.isStopped = true;
             anim.SetBool("attacking", true);
