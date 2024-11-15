@@ -12,7 +12,7 @@ public class CajaMunicion : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void abrir()    // control y clicar te lleva al script del metodo 
+    public void Abrir()    // control y clicar te lleva al script del metodo 
     {
         anim.SetTrigger("Abriendo_Caja");
     }

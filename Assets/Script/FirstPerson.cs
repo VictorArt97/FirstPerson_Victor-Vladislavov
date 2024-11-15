@@ -26,13 +26,12 @@ public class FirstPerson : MonoBehaviour
     [SerializeField] private float radioDeteccion;
     [SerializeField] private LayerMask queEsSuelo;
 
-   
-    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
        controller = GetComponent<CharacterController>();
         cam = Camera.main;
+
     }
 
     void Update()
@@ -44,8 +43,11 @@ public class FirstPerson : MonoBehaviour
        
         // Vector3 movimiento = new Vector3(h,0,v).normalized;
 
-        if (input.sqrMagnitude >0)      // es mejor que poner el magnitudes porque no usa la raiz cuadrada
+
+
+        if (input.sqrMagnitude >0)                                                                                    // es mejor que poner el magnitudes porque no usa la raiz cuadrada
         {         
+            
             // se calcula el angfulo al que tengo que rotarme en funcion de los unputs y orientacion de camara
 
             float anguloRotacion = Mathf.Atan2 (input.x, input.y)*Mathf.Rad2Deg + cam.transform.eulerAngles.y;
@@ -56,9 +58,17 @@ public class FirstPerson : MonoBehaviour
             controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);          
           
         }
+
+
         DeteccionSuelo();
+
         AplicarGravedad();
+
+        
     } 
+   
+    
+    
     private void AplicarGravedad()
     {
         movimientoVerticar.y += escalaGravedad * Time.deltaTime;
@@ -67,6 +77,8 @@ public class FirstPerson : MonoBehaviour
 
     }
 
+   
+    
     private void DeteccionSuelo ()
     {
         // tengo que lanzar una gola de deteccion en mis pies para detectar si hay suelo 
@@ -89,6 +101,8 @@ public class FirstPerson : MonoBehaviour
 
 
     }
+
+  
 
 
     public void RecibirDanho(float danhoRecibido)

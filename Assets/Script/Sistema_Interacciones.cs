@@ -20,7 +20,7 @@ public class Sistema_Interacciones : MonoBehaviour
        {
             if (hit.transform.TryGetComponent(out CajaMunicion scriptCaja))    // sirve para que no te puedas equivocar con lo del tag 
             {              
-                Debug.Log("estas mirando a un interactuable");
+               
 
                 // aquello que he hitteado es la caja 
                 // acceder a su script y Activaro ( es un componente )
@@ -29,7 +29,7 @@ public class Sistema_Interacciones : MonoBehaviour
                 interactuableActual.GetComponent<Outline>().enabled=true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    scriptCaja.abrir();
+                    scriptCaja.Abrir();
 
                         //crear un metodo en el script caja municon llamado abrir 
                         // llamar a dicho metodo desde dicho script

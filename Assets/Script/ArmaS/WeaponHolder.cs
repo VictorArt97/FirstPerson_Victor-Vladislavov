@@ -12,6 +12,9 @@ public class WeaponHolder : MonoBehaviour
 
     [SerializeField] private GameObject[] armas;
     int indiceArmaActual= 0;
+    [SerializeField] GameObject[] uI;
+    int indiceUIActual= 0;
+
    
     void Start()
     {
@@ -24,15 +27,21 @@ public class WeaponHolder : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CambiarArma(0);
+            CambiarDeUIArma(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             CambiarArma(1);
+            CambiarDeUIArma(1);
+          
         } 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             CambiarArma(2);
+            CambiarDeUIArma(2);
+           
+                
         }
     }
 
@@ -41,6 +50,13 @@ public class WeaponHolder : MonoBehaviour
         armas[indiceArmaActual].SetActive(false);
         indiceArmaActual = proximoArma;
         armas[indiceArmaActual].SetActive(true);
+    }
+    private void CambiarDeUIArma(int proximaInterfaz)
+    {
+        uI[indiceUIActual].SetActive(false);
+        indiceUIActual = proximaInterfaz;
+        uI[indiceUIActual].SetActive(true);
+
     }
 
     
