@@ -10,6 +10,7 @@ public class FirstPerson : MonoBehaviour
     [SerializeField] private float vidas;
    
     [SerializeField] private float velocidadMovimiento;
+    private float velocidadIncial;
     private Camera cam;
     
     [Header("Movimiento Jugador")]
@@ -31,7 +32,7 @@ public class FirstPerson : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
        controller = GetComponent<CharacterController>();
         cam = Camera.main;
-
+        velocidadIncial = velocidadMovimiento;
     }
 
     void Update()
@@ -64,7 +65,9 @@ public class FirstPerson : MonoBehaviour
 
         AplicarGravedad();
 
-        
+        Sprint();
+
+        Debug.Log("velocidad actual: "+ velocidadMovimiento);
     } 
    
     
@@ -77,7 +80,19 @@ public class FirstPerson : MonoBehaviour
 
     }
 
-   
+   private void Sprint()
+    {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            velocidadMovimiento *=2;
+            // new WaitForSeconds(2);
+            //velocidadMovimiento = velocidadIncial;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            velocidadMovimiento = velocidadIncial;
+        }
+    }
     
     private void DeteccionSuelo ()
     {

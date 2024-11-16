@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         {
             // saca una copia en el punto 0 con rotacion ninguna 
             Instantiate(enemigoPrefab, puntosSpawn[Random.Range(0, puntosSpawn.Length)].position,Quaternion.identity);
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(1);
             
 
         }
