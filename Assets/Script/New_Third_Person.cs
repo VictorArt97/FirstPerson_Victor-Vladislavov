@@ -4,16 +4,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class FirstPerson : MonoBehaviour
+public class New_Third_Person : MonoBehaviour
 {
 
-   // [Heather("Datos y demas Jugador")]// --------------------------------------------------------------------------------------------
+   // --------------------------------------------------------------------------------------------
 
-    [SerializeField] private float vidas; 
+    [SerializeField] private float vidas;
     private Camera cam;
-    
 
-    [Header("Movimiento Jugador")]// -----------------------------------------------------------------------------------------------
+
+   // -----------------------------------------------------------------------------------------------
 
 
     private float velocidadIncial;
@@ -23,65 +23,73 @@ public class FirstPerson : MonoBehaviour
     private Vector3 movimientoVertical;
     [SerializeField] private float alturaSalto;
 
-  
-  //  [Header("Deteccion del suelo")]
+
+   //----------------------------------------------------------------------------------------------
 
     [SerializeField] private Transform pies;
     [SerializeField] private float radioDeteccion;
     [SerializeField] private LayerMask queEsSuelo;
 
+    private Animator animator;
+    [SerializeField] private float smoothing;
+    private float velocidadRotacion;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-       controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
         cam = Camera.main;
         velocidadIncial = velocidadMovimiento;
     }
 
     void Update()
     {
-       float h = Input.GetAxisRaw("Horizontal");
-       float v = Input.GetAxisRaw("Vertical");
-       
-        Vector2 input = new Vector2 (h, v).normalized;
-       
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        Vector2 input = new Vector2(h, v).normalized;
+
         // Vector3 movimiento = new Vector3(h,0,v).normalized;
 
 
 
-        if (input.sqrMagnitude >0)                                                                                    // es mejor que poner el magnitudes porque no usa la raiz cuadrada
-        {         
-            
+        if (input.sqrMagnitude > 0)                       // es mejor que poner el magnitudes porque no usa la raiz cuadrada
+        {
+
             /// se calcula el angfulo al que tengo que rotarme en funcion de los unputs y orientacion de camara
 
-            float anguloRotacion = Mathf.Atan2 (input.x, input.y)*Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-            transform.eulerAngles = new Vector3 (0,anguloRotacion, 0);
-
+            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            float anguloSuave = Mathf.SmoothDampAngle(transform.eulerAngles.y, anguloRotacion, ref velocidadRotacion, smoothing);
+           
             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
-       
-            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);          
-          
+
+            controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+            animator.SetBool("walking", true);
+
+        }
+        else
+        {
+            animator.SetBool("walking", false);
         }
 
         DeteccionSuelo();
         AplicarGravedad();
-        Sprint();      
-    } 
-   
-    
-    
+        Sprint();
+    }
+
+
+
     private void AplicarGravedad()
     {
         movimientoVertical.y += escalaGravedad * Time.deltaTime;
-        controller.Move (movimientoVertical * Time.deltaTime);
+        controller.Move(movimientoVertical * Time.deltaTime);
     }
 
-   private void Sprint()    /// al pulsar shift el personaje acellera su velocidad x2
+    private void Sprint()    /// al pulsar shift el personaje acellera su velocidad x2
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            velocidadMovimiento *=2;
+            velocidadMovimiento *= 2;
             // new WaitForSeconds(2);
             //velocidadMovimiento = velocidadIncial;
         }
@@ -90,18 +98,18 @@ public class FirstPerson : MonoBehaviour
             velocidadMovimiento = velocidadIncial;
         }
     }
-    
-    private void DeteccionSuelo ()
+
+    private void DeteccionSuelo()
     {
         // tengo que lanzar una gola de deteccion en mis pies para detectar si hay suelo 
-       Collider[] collsDetectados= Physics.OverlapSphere(pies.position,radioDeteccion,queEsSuelo);
+        Collider[] collsDetectados = Physics.OverlapSphere(pies.position, radioDeteccion, queEsSuelo);
 
-        if (collsDetectados.Length>0)
+        if (collsDetectados.Length > 0)
         {
-            movimientoVertical.y =0;
+            movimientoVertical.y = 0;
             Saltar();
         }
-          
+
     }
 
     private void Saltar()
@@ -114,7 +122,7 @@ public class FirstPerson : MonoBehaviour
 
     }
 
-  
+
 
 
     public void RecibirDanho(float danhoRecibido)
@@ -133,16 +141,16 @@ public class FirstPerson : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("ParteEnemigo"))
         {
-           Rigidbody rbEnemigo= hit.gameObject.GetComponent<Rigidbody>();
-            Vector3 direccionFuerza= hit.transform.position - gameObject.transform.position;
-            rbEnemigo.AddForce(direccionFuerza.normalized * 50 , ForceMode.Impulse);
+            Rigidbody rbEnemigo = hit.gameObject.GetComponent<Rigidbody>();
+            Vector3 direccionFuerza = hit.transform.position - gameObject.transform.position;
+            rbEnemigo.AddForce(direccionFuerza.normalized * 50, ForceMode.Impulse);
         }
     }
 
     // sirve para dibujar una forma
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;    
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(pies.position, radioDeteccion);
     }
 }
