@@ -3076,6 +3076,21 @@ PrefabInstance:
       propertyPath: armas.Array.data[2]
       value: 
       objectReference: {fileID: 904582954}
+    - target: {fileID: 6584398412280119196, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: alturaSalto
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584398412280119196, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: escalaGravedad
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584398412280119196, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: velocidadMovimiento
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7164910213640717332, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_IsActive
