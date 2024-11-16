@@ -672,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 996838883112067767, guid: cdc3813acde54c44f831e5ccec663489,
         type: 3}
       propertyPath: smoothing
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 996838883112067767, guid: cdc3813acde54c44f831e5ccec663489,
         type: 3}
@@ -779,8 +779,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Third person
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4447786615862773143, guid: cdc3813acde54c44f831e5ccec663489, type: 3}
+    - target: {fileID: 7860576740410257298, guid: cdc3813acde54c44f831e5ccec663489,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3544,47 +3548,47 @@ PrefabInstance:
     - target: {fileID: 2203350644888908310, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8791199
+      value: 0.17999268
       objectReference: {fileID: 0}
     - target: {fileID: 2203350644888908310, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3644485
+      value: 0.68800354
       objectReference: {fileID: 0}
     - target: {fileID: 2203350644888908310, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.51571655
+      value: 0.17999268
       objectReference: {fileID: 0}
     - target: {fileID: 2203350644888908310, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.971447
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2203350644888908310, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.23725666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4007927423104389222, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: field of view
-      value: 40
+      value: 60.000004
       objectReference: {fileID: 0}
     - target: {fileID: 4007927423104389222, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: far clip plane
-      value: 5000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4007927423104389222, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: near clip plane
-      value: 0.1
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4007927423104389222, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4983229740861612918, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
@@ -3594,7 +3598,7 @@ PrefabInstance:
     - target: {fileID: 4983229740861612918, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5552956291768879586, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
