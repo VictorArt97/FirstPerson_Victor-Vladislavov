@@ -37,11 +37,13 @@ public class WeaponHolder : MonoBehaviour
         float ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
        if (ScrollWheel> 0) // anterior 
        {
+            CambiarMira(indiceUIActual - 1);
             CambiarArma(indiceArmaActual - 1);
        }
         
        if (ScrollWheel< 0) // siguiente
        {
+            CambiarMira(indiceUIActual + 1);
             CambiarArma(indiceArmaActual + 1);
 
        }
@@ -97,7 +99,7 @@ public class WeaponHolder : MonoBehaviour
 
        // uI[indiceUIActual].SetActive(true);
 
-        if (proximaInterfaz >= 0 && proximaInterfaz < armas.Length)
+        if (proximaInterfaz >= 0 && proximaInterfaz < uI.Length)
         {
             uI[indiceUIActual].SetActive(false);
 
