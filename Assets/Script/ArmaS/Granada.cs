@@ -11,8 +11,10 @@ public class Granada : MonoBehaviour
     [SerializeField] private float fuerzaDisparo;
     [SerializeField] private float tiempoDestruccion;
 
-    [SerializeField] float radioExplosion;
-    [SerializeField] LayerMask QueEsDaniable;
+    [SerializeField]private  float radioExplosion;
+    [SerializeField]private  LayerMask QueEsDaniable;
+
+    [SerializeField] private GameObject explosionPrefab;
     
     void Start()
     {
@@ -28,6 +30,8 @@ public class Granada : MonoBehaviour
 
     private void OnDestroy()
     {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        // instanciar una copia de la explosion sin rotacion
         Debug.Log("me voy de este mundo");
 
         // para hacerle daño al que colisiona 
