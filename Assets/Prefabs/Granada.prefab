@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3382730464232487891}
   m_Layer: 0
   m_Name: Granada
-  m_TagString: Untagged
+  m_TagString: Explosivo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuerzaDisparo: 20
   tiempoDestruccion: 3
-  radioExplosion: 0
+  radioExplosion: 20
   QueEsDaniable:
     serializedVersion: 2
     m_Bits: 128

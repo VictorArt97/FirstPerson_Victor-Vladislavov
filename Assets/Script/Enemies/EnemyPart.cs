@@ -1,23 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyPart : MonoBehaviour
 {
     
     [SerializeField] private Enemigo mainScript;
     [SerializeField] private float multiplicadorDanio;   // para hacer que el darle en x parte del cuerpo , hace un daño distinto 
-
-
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
 
     public void RecibirDanio(float danioRecibido)
     {
@@ -27,6 +17,13 @@ public class EnemyPart : MonoBehaviour
         {
             mainScript.Morir();
         }
+
+    }
+    public void Explotar()
+    {
+        mainScript.GetComponent<Animator>().enabled = false;
+        mainScript.GetComponent<NavMeshAgent>().enabled = false;
+        mainScript.enabled = false;
 
     }
 }
