@@ -24,38 +24,86 @@ public class WeaponHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        CambiarConTeclado();
+        CambiarConRaton();
+
+
+    }
+
+    private void CambiarConRaton()
+    {
+
+        //
+        float ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
+       if (ScrollWheel> 0) // anterior 
+       {
+            CambiarArma(indiceArmaActual - 1);
+       }
+        
+       if (ScrollWheel< 0) // siguiente
+       {
+            CambiarArma(indiceArmaActual + 1);
+
+       }
+    }
+    private void CambiarConTeclado()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {
             CambiarArma(0);
-            CambiarDeUIArma(0);
+            CambiarMira(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad3))
         {
             CambiarArma(1);
-            CambiarDeUIArma(1);
-          
-        } 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+            CambiarMira(1);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
         {
             CambiarArma(2);
-            CambiarDeUIArma(2);
-           
-                
+            CambiarMira(2);
+
+
         }
     }
 
-    private void CambiarArma(int proximoArma)
+    private void CambiarArma(int nuevoIndice)
     {
-        armas[indiceArmaActual].SetActive(false);
-        indiceArmaActual = proximoArma;
-        armas[indiceArmaActual].SetActive(true);
+
+      //  indiceArmaActual = nuevoIndice;
+
+        // solo si es un indice valido , puede cambiar de arma
+        if(nuevoIndice >= 0 && nuevoIndice < armas.Length)
+        {
+            armas[indiceArmaActual].SetActive(false);
+
+            indiceArmaActual = nuevoIndice;     
+            
+            armas[indiceArmaActual].SetActive(true);
+        }
     }
-    private void CambiarDeUIArma(int proximaInterfaz)
+
+
+
+
+    private void CambiarMira(int proximaInterfaz)
     {
-        uI[indiceUIActual].SetActive(false);
-        indiceUIActual = proximaInterfaz;
-        uI[indiceUIActual].SetActive(true);
+       // uI[indiceUIActual].SetActive(false);
+       // indiceUIActual = proximaInterfaz;
+
+
+
+       // uI[indiceUIActual].SetActive(true);
+
+        if (proximaInterfaz >= 0 && proximaInterfaz < armas.Length)
+        {
+            uI[indiceUIActual].SetActive(false);
+
+            indiceUIActual = proximaInterfaz ;
+            uI[indiceUIActual].SetActive(true) ;
+        }
 
     }
 

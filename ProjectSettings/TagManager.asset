@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ParteEnemigo
   - Interaccionable
+  - Explosivo
   layers:
   - Default
   - TransparentFX
