@@ -69,6 +69,7 @@ public class Enemigo : MonoBehaviour
                 // esta variable es del tipo first person al ser lo mas especifico
 
                 colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danhoAtaque);
+               
 
                
             }
@@ -87,8 +88,28 @@ public class Enemigo : MonoBehaviour
         {
             agent.isStopped = true;
             anim.SetBool("attacking", true);
+
+            EnfocarPlayer();
+
         }
     }
+
+    private void EnfocarPlayer()
+    {
+        // encontrar la direccion en la que debe mirar  y normalizarla por si acaso
+        // calculo el vector que enfoque al jugador 
+
+        Vector3 direccionAPlayer = (player.transform.position - this.gameObject.transform.position).normalized; 
+
+      
+        // me aseguro que no se vuelque el enemigo al darle al player
+        direccionAPlayer.y = 0;
+
+        //calculo la rotacion a la que me tengo que girar para orientarme en esa direccion 
+        transform.rotation= Quaternion.LookRotation(direccionAPlayer);
+
+    }
+
 
     #region Eventos de animacion
     // funciona con evento de animacion ( todavia no porque no he terminado)

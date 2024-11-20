@@ -125,6 +125,10 @@ public class FirstPerson : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (vidas <=0) 
+        {
+            
+        }
 
     }
 
