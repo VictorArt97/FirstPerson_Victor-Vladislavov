@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class FirstPerson : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class FirstPerson : MonoBehaviour
     [SerializeField] private float radioDeteccion;
     [SerializeField] private LayerMask queEsSuelo;
 
+    [SerializeField] private Scrollbar barraVida;
+
 
     void Start()
     {
@@ -37,40 +40,50 @@ public class FirstPerson : MonoBehaviour
        controller = GetComponent<CharacterController>();
         cam = Camera.main;
         velocidadIncial = velocidadMovimiento;
+
+        barraVida = GetComponent<Scrollbar>();
     }
 
     void Update()
     {
-       float h = Input.GetAxisRaw("Horizontal");
-       float v = Input.GetAxisRaw("Vertical");
-       
-        Vector2 input = new Vector2 (h, v).normalized;
-       
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        Vector2 input = new Vector2(h, v).normalized;
+
         // Vector3 movimiento = new Vector3(h,0,v).normalized;
 
 
 
-        if (input.sqrMagnitude >0)                                                                                    // es mejor que poner el magnitudes porque no usa la raiz cuadrada
-        {         
-            
+        if (input.sqrMagnitude > 0)                                                                                    // es mejor que poner el magnitudes porque no usa la raiz cuadrada
+        {
+
             /// se calcula el angfulo al que tengo que rotarme en funcion de los unputs y orientacion de camara
 
-            float anguloRotacion = Mathf.Atan2 (input.x, input.y)*Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-            transform.eulerAngles = new Vector3 (0,anguloRotacion, 0);
+            float anguloRotacion = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
 
             Vector3 movimiento = Quaternion.Euler(0, anguloRotacion, 0) * Vector3.forward;
-       
-            controller.Move(movimiento*velocidadMovimiento*Time.deltaTime);          
-          
+
+            controller.Move(movimiento * velocidadMovimiento * Time.deltaTime);
+
         }
 
         DeteccionSuelo();
         AplicarGravedad();
-        Sprint();      
-    } 
-   
-    
-    
+        Sprint();
+
+        // actualizar vida en canva
+        VidaUI();
+
+    }
+
+    public void VidaUI()
+    {
+        barraVida.value = vidas;
+    }
+
+
     private void AplicarGravedad()
     {
         movimientoVertical.y += escalaGravedad * Time.deltaTime;
