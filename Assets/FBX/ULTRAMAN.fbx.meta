@@ -3,7 +3,22 @@ guid: c0b554ff49fb1964792c065d4e4d8352
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ultraman body color
+    second: {fileID: 2800000, guid: 03bf3bf3cf29e2a45acda4838b7d30f3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Ultraman body specular
+    second: {fileID: 2800000, guid: 1483bd356197445498d792571a3fc056, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ultraman_nm
+    second: {fileID: 2800000, guid: d2c1cb8d991fc2c4c82f4dc6377f705a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
