@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balasCargador: 60
   balasBolsa: 200
-  distanciaAtaque: 500
+  distanciaAtaque: 100
   danioAtaque: 10
   cadenciaAtaque: 0.02
