@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -41,5 +42,18 @@ public class CanvasManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.visible=false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void Configuration()
+    {
+        SceneManager.LoadScene(2);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
