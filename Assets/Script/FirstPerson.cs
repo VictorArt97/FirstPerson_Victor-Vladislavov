@@ -33,6 +33,9 @@ public class FirstPerson : MonoBehaviour
 
     [SerializeField] private Scrollbar barraVida;
 
+    // ataque mele 
+
+
 
     void Start()
     {
@@ -82,14 +85,11 @@ public class FirstPerson : MonoBehaviour
     {
         barraVida.value = vidas;
     }
-
-
     private void AplicarGravedad()
     {
         movimientoVertical.y += escalaGravedad * Time.deltaTime;
         controller.Move (movimientoVertical * Time.deltaTime);
     }
-
    private void Sprint()    /// al pulsar shift el personaje acellera su velocidad x2
     {
         if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -126,10 +126,6 @@ public class FirstPerson : MonoBehaviour
 
 
     }
-
-  
-
-
     public void RecibirDanho(float danhoRecibido)
     {
 

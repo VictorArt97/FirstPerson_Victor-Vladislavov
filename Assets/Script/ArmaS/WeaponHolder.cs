@@ -93,7 +93,7 @@ public class WeaponHolder : MonoBehaviour
 
 
 
-    private void CambiarMira(int proximaInterfaz)
+   private void CambiarMira(int proximaInterfaz)
     {
        // uI[indiceUIActual].SetActive(false);
        // indiceUIActual = proximaInterfaz;

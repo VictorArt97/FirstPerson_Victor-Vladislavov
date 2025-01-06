@@ -1155,6 +1155,7 @@ GameObject:
   - component: {fileID: 2725743640224470497}
   - component: {fileID: 9115641137307348531}
   - component: {fileID: 7840046340553326509}
+  - component: {fileID: 2284234974546949443}
   m_Layer: 7
   m_Name: Mutant
   m_TagString: Untagged
@@ -1254,7 +1255,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6a359f1875528204d865626f8793d10f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.476
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1338,6 +1339,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!64 &2284234974546949443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828936464623237703}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3932620715741700622
 GameObject:
   m_ObjectHideFlags: 0
