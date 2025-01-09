@@ -8771,6 +8771,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 659065456835666626, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1119965656134980586, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: granadaPrefab
@@ -8785,17 +8790,17 @@ PrefabInstance:
     - target: {fileID: 1848129192778904491, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 483.68695
+      value: 506.724
       objectReference: {fileID: 0}
     - target: {fileID: 1848129192778904491, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 133.26727
+      value: 133.423
       objectReference: {fileID: 0}
     - target: {fileID: 1848129192778904491, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 75.51785
+      value: 64.713
       objectReference: {fileID: 0}
     - target: {fileID: 1848129192778904491, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
@@ -8931,6 +8936,16 @@ PrefabInstance:
         type: 3}
       propertyPath: queEsDaniable.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787198420816345777, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: m_VerticalAxis.m_MaxSpeed
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787198420816345777, guid: f7d3c8508d279a14a949d42b43a6c1b0,
+        type: 3}
+      propertyPath: m_HorizontalAxis.m_MaxSpeed
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 8817686595561931574, guid: f7d3c8508d279a14a949d42b43a6c1b0,
         type: 3}
