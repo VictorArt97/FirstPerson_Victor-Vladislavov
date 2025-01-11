@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Sistema_Interacciones : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private float distanciaInteraccion;
-
+    [SerializeField] private GameObject equipamientoRyuki;
     Transform interactuableActual;
 
     void Update()
@@ -27,11 +28,16 @@ public class Sistema_Interacciones : MonoBehaviour
 
                 interactuableActual = hit.transform;
                 interactuableActual.GetComponent<Outline>().enabled=true;
+                
+                
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    scriptCaja.Abrir();
-
-                        //crear un metodo en el script caja municon llamado abrir 
+                   // scriptCaja.Abrir();
+                    Debug.Log("DECK EQUIPADO");
+                    equipamientoRyuki.SetActive(true);
+                       
+                    //crear un metodo en el script caja municon llamado abrir 
                         // llamar a dicho metodo desde dicho script
                         //implemetnar el metodo abrir ---> obtener el animator 
                         // activar el trigger del animator  anim.SetTrigger

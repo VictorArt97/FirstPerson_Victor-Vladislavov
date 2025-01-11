@@ -67,11 +67,6 @@ public class WeaponHolder : MonoBehaviour
             CambiarMira(2);
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            CambiarArma(3);
-            CambiarMira(3);
-        }
     }
 
     private void CambiarArma(int nuevoIndice)

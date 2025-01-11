@@ -49,7 +49,7 @@ public class Enemigo : MonoBehaviour
             DetectarJugador();
         
         }
-        Debug.Log(vidaEnemigo);
+        
     }
 
     private void DetectarJugador()
