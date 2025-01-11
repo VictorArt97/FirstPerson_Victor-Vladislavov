@@ -36,6 +36,7 @@ public class Sistema_Interacciones : MonoBehaviour
                    // scriptCaja.Abrir();
                     Debug.Log("DECK EQUIPADO");
                     equipamientoRyuki.SetActive(true);
+                    
                        
                     //crear un metodo en el script caja municon llamado abrir 
                         // llamar a dicho metodo desde dicho script

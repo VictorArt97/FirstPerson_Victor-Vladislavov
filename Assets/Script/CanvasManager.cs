@@ -56,4 +56,9 @@ public class CanvasManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void VolverAlEscritorio()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
