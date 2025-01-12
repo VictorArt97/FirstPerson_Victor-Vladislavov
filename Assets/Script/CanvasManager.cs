@@ -46,6 +46,7 @@ public class CanvasManager : MonoBehaviour
 
     public void StartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
     public void Configuration()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FirstPerson : MonoBehaviour
@@ -133,11 +134,11 @@ public class FirstPerson : MonoBehaviour
         if (vidas < 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(2);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
-        if (vidas <=0) 
-        {
-            
-        }
+       
 
     }
 
