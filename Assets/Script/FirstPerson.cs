@@ -84,7 +84,7 @@ public class FirstPerson : MonoBehaviour
 
     public void VidaUI()
     {
-        barraVida.value = vidas;
+        //barraVida.value = vidas;
     }
     private void AplicarGravedad()
     {

@@ -20,9 +20,9 @@ public class Sistema_Interacciones : MonoBehaviour
        if( Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, distanciaInteraccion))
        {
             if (hit.transform.TryGetComponent(out CajaMunicion scriptCaja))    // sirve para que no te puedas equivocar con lo del tag 
-            {              
-               
+            {
 
+                Debug.Log("dfsdfsdfsdfsd");
                 // aquello que he hitteado es la caja 
                 // acceder a su script y Activaro ( es un componente )
 

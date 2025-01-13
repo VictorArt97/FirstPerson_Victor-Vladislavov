@@ -67,13 +67,13 @@ public class Enemigo : MonoBehaviour
             {
 
                 // esta variable es del tipo first person al ser lo mas especifico
-
+                Debug.Log("Daño a" + colsDetectados[i].name);
                 colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danhoAtaque);
                
 
                
             }
-            danhoRealizado= true;
+            danhoRealizado = true;
         }
     }
 
@@ -120,11 +120,10 @@ public class Enemigo : MonoBehaviour
         anim.SetBool("attacking",false);
     }
     private void AbrirVentanaAtaque()
-
-    #endregion
     {
         ventanaAbierta=true;
     }
+    #endregion
     public void Morir()
     {
 
