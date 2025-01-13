@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38692439cf985a4dae7b829d4595c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  danhoAtaque: 25
+  danhoAtaque: 25.4
   AttackPoint: {fileID: 4937169592637771284}
   radioAtaque: 1
   queEsDanhable:

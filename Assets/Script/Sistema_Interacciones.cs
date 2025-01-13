@@ -9,6 +9,7 @@ public class Sistema_Interacciones : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float distanciaInteraccion;
     [SerializeField] private GameObject equipamientoRyuki;
+    [SerializeField] private GameObject Instrucciones;
     Transform interactuableActual;
 
     void Update()
@@ -27,7 +28,7 @@ public class Sistema_Interacciones : MonoBehaviour
                 // acceder a su script y Activaro ( es un componente )
 
                 interactuableActual = hit.transform;
-                interactuableActual.GetComponent<Outline>().enabled=true;
+                interactuableActual.GetComponent<Outline>().enabled = true;
                 
                 
                 
@@ -36,7 +37,13 @@ public class Sistema_Interacciones : MonoBehaviour
                    // scriptCaja.Abrir();
                     Debug.Log("DECK EQUIPADO");
                     equipamientoRyuki.SetActive(true);
-                    
+
+                    Time.timeScale = 0f;
+                        
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+
+                    Instrucciones.SetActive(true);
                        
                     //crear un metodo en el script caja municon llamado abrir 
                         // llamar a dicho metodo desde dicho script

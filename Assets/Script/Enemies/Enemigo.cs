@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 
 public class Enemigo : MonoBehaviour
 {
@@ -22,9 +23,9 @@ public class Enemigo : MonoBehaviour
 
     private Rigidbody[] huesos;    // array de rigidBodys
 
-
-
     [SerializeField] private float vidaEnemigo;
+    private AudioSource audioManager;
+    
 
     public float VidaEnemigo { get => vidaEnemigo; set => vidaEnemigo = value; }
 
@@ -34,8 +35,9 @@ public class Enemigo : MonoBehaviour
         anim = GetComponent<Animator>();
         huesos= GetComponentsInChildren<Rigidbody>();
         player = GameObject.FindObjectOfType<FirstPerson>();
+        audioManager= GetComponent<AudioSource>();
         
-        EstadoHuesos(true);
+        EstadoHuesos(true);       
     }
 
    
@@ -46,8 +48,7 @@ public class Enemigo : MonoBehaviour
         // solo si la ventana esta abierta y aun no hemos hecho daño
         if (ventanaAbierta && danhoRealizado == false)
         {
-            DetectarJugador();
-        
+            DetectarJugador();       
         }
         
     }
@@ -58,20 +59,18 @@ public class Enemigo : MonoBehaviour
         // crear una variable que represente el radio de ataque 
         // variagble que represente la layer a la que afecta 
         // completar los parametros de entrada
+
         Collider [] colsDetectados= Physics.OverlapSphere(AttackPoint.position, radioAtaque, queEsDanhable);
 
         // si hemos detectado al menos 1 colider mide ya mas que 0 ( ya que este if significa que la longitud de los coliders es mayor que 0)
+
         if ( colsDetectados.Length > 0 )
         {
             for (int i = 0; i < colsDetectados.Length; i++)
             {
-
                 // esta variable es del tipo first person al ser lo mas especifico
                 Debug.Log("Daño a" + colsDetectados[i].name);
-                colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danhoAtaque);
-               
-
-               
+                colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danhoAtaque);                             
             }
             danhoRealizado = true;
         }
@@ -88,9 +87,7 @@ public class Enemigo : MonoBehaviour
         {
             agent.isStopped = true;
             anim.SetBool("attacking", true);
-
             EnfocarPlayer();
-
         }
     }
 
@@ -129,6 +126,9 @@ public class Enemigo : MonoBehaviour
 
         // enabled sirve para activar/desactivar componentres 
         // setActive sirve para activar /Desactivar un Objeto entero
+
+        audioManager.enabled=false; // cojo el audiosorce del enemigo y hago que cierre la puta boca cuando se muera , que pesado es joder :...(((
+        
         anim.enabled = false;
         agent.enabled = false;
         EstadoHuesos(false);
@@ -147,6 +147,5 @@ public class Enemigo : MonoBehaviour
     private void CerrarVentanaAtaque()
     {
         ventanaAbierta = false;
-
     }
 }

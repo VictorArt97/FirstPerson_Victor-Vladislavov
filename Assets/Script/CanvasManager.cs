@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour
 {
     private bool pausa;
     [SerializeField] GameObject menuPausa;
+    [SerializeField] GameObject instrucciones;
    
     void Start()
     {
@@ -49,9 +50,9 @@ public class CanvasManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
-    public void Configuration()
+    public void DeathScreen()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     public void Quit()
     {
@@ -62,4 +63,12 @@ public class CanvasManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void DesactivarInstrucciones()
+    {
+        instrucciones.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }

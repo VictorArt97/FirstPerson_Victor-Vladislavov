@@ -8,7 +8,8 @@ public class Spawner : MonoBehaviour
     //Spawnear cada 2 segundos un zombie aleatorio entre distintos puntos de Spawn
 
     [SerializeField] private Transform [] puntosSpawn;
-    [SerializeField] private Enemigo enemigoPrefab; 
+    [SerializeField] private Enemigo enemigoPrefab;
+    private int contador;
 
     void Start()
     {
@@ -19,15 +20,17 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Generador()
     {
-        while (true)
+        while (contador<=20)
         {
             // saca una copia en el punto 0 con rotacion ninguna 
             Instantiate(enemigoPrefab, puntosSpawn[Random.Range(0, puntosSpawn.Length)].position,Quaternion.identity);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(1);
+            contador++;
+            
             
 
         }
-
+        Debug.Log("Se acabo");
         // para porcentaje if ( rng <= 0.3f)   // 10%
 
         // if ( rng > 0.2f && rng <= 0.9f) // 70%    ( restar el segundo con el primero)

@@ -133,8 +133,8 @@ public class FirstPerson : MonoBehaviour
         vidas -= danhoRecibido;
         if (vidas < 0)
         {
+            SceneManager.LoadScene(3);
             Destroy(gameObject);
-            SceneManager.LoadScene(2);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
