@@ -88,7 +88,18 @@ public class EnemigoFinal : MonoBehaviour
         audioManager.enabled = false;
         Destroy(gameObject, 20);
     }
-    
+
+    //public void RecibirDanio(float danioRecibido)
+    //{
+    //    mainScript.VidaEnemigo -= danioRecibido * multiplicadorDanio;
+
+    //    if (mainScript.VidaEnemigo <= 0)
+    //    {
+    //        mainScript.Morir();
+    //    }
+
+    //}
+
     private void CloseAttackWindow()
     {
         OpenWindow=false;
