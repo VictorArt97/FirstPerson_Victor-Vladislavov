@@ -8,8 +8,7 @@ public class Enemigo : MonoBehaviour
 {
 
     [SerializeField] private float danhoAtaque;
-
-   
+  
     private NavMeshAgent agent;
     private FirstPerson player;
 
@@ -26,7 +25,6 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private float vidaEnemigo;
     private AudioSource audioManager;
     
-
     public float VidaEnemigo { get => vidaEnemigo; set => vidaEnemigo = value; }
 
     void Start()
