@@ -57,6 +57,12 @@ public class Arma_Melee : MonoBehaviour
                     hitInfo.transform.GetComponent<EnemyPart>().RecibirDanio(misDatos.danioAtaque);
 
                 }
+
+                if (hitInfo.transform.CompareTag("finalBoss"))
+                {
+                    hitInfo.transform.GetComponent<FInalBossPart>().RecibirDanio(misDatos.danioAtaque);
+
+                }
                 // generar un metodo recibir daño en el script enemgio con un parametro tipo float
                 //desde este script ejecutar el metodo recibir daño del enemigo
                 // para ello necesitamos un daño.obtenla del SO

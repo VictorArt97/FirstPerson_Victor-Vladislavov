@@ -60,7 +60,7 @@ public class EnemigoFinal : MonoBehaviour
     //}
     private void VidaUI()
     {
-        barradevida.fillAmount = vidaFinalBoss / 100;
+        barradevida.fillAmount = vidaFinalBoss / 300;
     }
     private void DetectarAlJugador()
     {

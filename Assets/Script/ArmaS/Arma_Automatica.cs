@@ -38,6 +38,11 @@ public class Arma_Automatica : MonoBehaviour
                         {
                             hitInfo.transform.GetComponent<EnemyPart>().RecibirDanio(misDatos.danioAtaque);
 
+                        }   
+                        if (hitInfo.transform.CompareTag("finalBoss"))
+                        {
+                            hitInfo.transform.GetComponent<FInalBossPart>().RecibirDanio(misDatos.danioAtaque);
+
                         }              
                     }
                     timer = 0;
