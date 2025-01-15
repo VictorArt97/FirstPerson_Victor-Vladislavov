@@ -25,7 +25,7 @@ public class EnemigoFinal : MonoBehaviour
 
     [SerializeField] private Image barradevida;
     [SerializeField] private GameObject UIBoss;
-    [SerializeField] private AudioSource canvas;
+   // [SerializeField] private AudioSource canvas;
 
     public float VidaFinalBoss { get => vidaFinalBoss; set => vidaFinalBoss = value; }
 
@@ -35,8 +35,8 @@ public class EnemigoFinal : MonoBehaviour
         animator = GetComponent<Animator>();
         player= GameObject.FindObjectOfType<FirstPerson>();
         audioManager = GetComponent<AudioSource>();
-        canvas= GetComponent<AudioSource>();
-        canvas.Stop();
+      //  canvas= GetComponent<AudioSource>();
+        //canvas.Stop();
         UIBoss.SetActive(true);
         audioManager.playOnAwake = true;
     }
