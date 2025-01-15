@@ -131,6 +131,8 @@ public class Enemigo : MonoBehaviour
         agent.enabled = false;
         EstadoHuesos(false);
         Destroy(gameObject, 10);
+        GetComponent<FirstPerson>().RecibirDanho(-1);
+
     }
 
     private void EstadoHuesos(bool estado)

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EnemigoFinal : MonoBehaviour
 {
@@ -21,6 +23,10 @@ public class EnemigoFinal : MonoBehaviour
     [SerializeField] private float vidaFinalBoss;
     private AudioSource audioManager;
 
+    [SerializeField] private Image barradevida;
+    [SerializeField] private GameObject UIBoss;
+    [SerializeField] private AudioSource canvas;
+
     public float VidaFinalBoss { get => vidaFinalBoss; set => vidaFinalBoss = value; }
 
     void Start()
@@ -29,6 +35,10 @@ public class EnemigoFinal : MonoBehaviour
         animator = GetComponent<Animator>();
         player= GameObject.FindObjectOfType<FirstPerson>();
         audioManager = GetComponent<AudioSource>();
+        canvas= GetComponent<AudioSource>();
+        canvas.Stop();
+        UIBoss.SetActive(true);
+        audioManager.playOnAwake = true;
     }
 
 
@@ -39,6 +49,18 @@ public class EnemigoFinal : MonoBehaviour
         {
             DetectarAlJugador();
         }
+        VidaUI();
+    }
+
+    //private void Awake()
+    //{
+    //    canvas.Stop();
+    //    UIBoss.SetActive(true);
+    //    audioManager.playOnAwake = true;
+    //}
+    private void VidaUI()
+    {
+        barradevida.fillAmount = vidaFinalBoss / 100;
     }
     private void DetectarAlJugador()
     {
@@ -48,6 +70,7 @@ public class EnemigoFinal : MonoBehaviour
         {
             for(int i = 0; i < colsDetectados.Length; i++)
             {
+                Debug.Log("Daño a" + colsDetectados[i].name);
                 colsDetectados[i].GetComponent<FirstPerson>().RecibirDanho(danioAtaque);
             }
             danioRealizado = true;
@@ -82,11 +105,13 @@ public class EnemigoFinal : MonoBehaviour
         OpenWindow=true;
     }
 
-    private void Muerte()
+    public void Muerte()
     {
         animator.enabled = false;
         audioManager.enabled = false;
+        SceneManager.LoadScene(4);   // cargar escena de victoria 
         Destroy(gameObject, 20);
+
     }
 
     //public void RecibirDanio(float danioRecibido)

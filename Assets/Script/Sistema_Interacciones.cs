@@ -11,9 +11,11 @@ public class Sistema_Interacciones : MonoBehaviour
     [SerializeField] private GameObject equipamientoRyuki;
     [SerializeField] private GameObject Instrucciones;
     Transform interactuableActual;
+    [SerializeField] private GameObject Pulsarpara;
 
     void Update()
     {
+        Pulsarpara.SetActive(false);
         // lanzar un raycast por cada frame desde la main camera hacia adelante
         // si hemos hitteado algo , preguntar si ese algo tiene el tag interactuable
         // si es asi , pone un debug log "detectado"        
@@ -29,7 +31,7 @@ public class Sistema_Interacciones : MonoBehaviour
 
                 interactuableActual = hit.transform;
                 interactuableActual.GetComponent<Outline>().enabled = true;
-                
+                Pulsarpara.SetActive(true);
                 
                 
                 if (Input.GetKeyDown(KeyCode.E))

@@ -25,6 +25,8 @@ public class FirstPerson : MonoBehaviour
     private Vector3 movimientoVertical;
     [SerializeField] private float alturaSalto;
 
+    [SerializeField] private Image barradevida;
+
   
   //  [Header("Deteccion del suelo")]
 
@@ -32,7 +34,7 @@ public class FirstPerson : MonoBehaviour
     [SerializeField] private float radioDeteccion;
     [SerializeField] private LayerMask queEsSuelo;
 
-    [SerializeField] private Scrollbar barraVida;
+    
 
     // ataque mele 
 
@@ -45,7 +47,7 @@ public class FirstPerson : MonoBehaviour
         cam = Camera.main;
         velocidadIncial = velocidadMovimiento;
 
-        barraVida = GetComponent<Scrollbar>();
+        
     }
 
     void Update()
@@ -84,7 +86,7 @@ public class FirstPerson : MonoBehaviour
 
     public void VidaUI()
     {
-        //barraVida.value = vidas;
+        barradevida.fillAmount = vidas/100;
     }
     private void AplicarGravedad()
     {
